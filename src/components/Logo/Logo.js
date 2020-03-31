@@ -10,6 +10,7 @@ const StyledLogo = styled.div`
   left: 40px;
   top: 30px;
   font-family: StarJedi;
+  z-index: 999;
 
   h1 {
     color: ${props => props.color};

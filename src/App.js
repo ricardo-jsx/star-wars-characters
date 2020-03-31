@@ -1,8 +1,11 @@
 import React from 'react';
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { ApolloProvider } from '@apollo/react-hooks';
 
 import Home from 'pages/Home/index';
 import GlobalFonts from 'fonts/fonts';
+
+import client from './apollo.client';
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -34,12 +37,14 @@ const theme = {
 
 export default function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalFonts />
-      <GlobalStyle />
-      <Main>
-        <Home />
-      </Main>
-    </ThemeProvider>
+    <ApolloProvider client={client}>
+      <ThemeProvider theme={theme}>
+        <GlobalFonts />
+        <GlobalStyle />
+        <Main>
+          <Home />
+        </Main>
+      </ThemeProvider>
+    </ApolloProvider>
   );
 }
