@@ -13,7 +13,7 @@ const HomeStyled = styled.div`
   width: 800px;
   height: 550px;
   overflow: hidden;
-  background: ${props => props.theme.mirage};
+  background: ${(props) => props.theme.mirage};
   border-radius: 20px;
   position: relative;
 
@@ -28,20 +28,19 @@ const HomeStyled = styled.div`
   }
 `;
 
-
 export default function Home() {
   const { loading, error, data } = useQuery(GET_LUKE);
 
   const imgs = useMemo(() => {
-    if(loading) return [];
-    
+    if (loading) return [];
+
     return [
-      { id: data.character.id, name: data.character.name, img : data.character.img },
-      ...data.character.starships.map(({ id, img, name }) => ({ id, name, img}))
-    ]
+      { id: data.character.id, name: data.character.name, img: data.character.img },
+      ...data.character.starships.map(({ id, img, name }) => ({ id, name, img })),
+    ];
   }, [data, loading]);
 
-  if(loading) return <p>Loading...</p>
+  if (loading) return <p>Loading...</p>;
 
   return (
     <HomeStyled>
@@ -51,5 +50,5 @@ export default function Home() {
       </div>
       <div className="right" />
     </HomeStyled>
-  )
+  );
 }

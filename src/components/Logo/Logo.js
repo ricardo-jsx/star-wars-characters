@@ -13,7 +13,7 @@ const StyledLogo = styled.div`
   z-index: 999;
 
   h1 {
-    color: ${props => props.color};
+    color: ${(props) => props.color};
     font-size: 16px;
     line-height: 14px;
     user-select: none;
@@ -26,7 +26,7 @@ export default function Logo({ color }) {
       <h1>Star</h1>
       <h1>Wars</h1>
     </StyledLogo>
-  )
+  );
 }
 
 Logo.propTypes = {
@@ -34,5 +34,5 @@ Logo.propTypes = {
 };
 
 Logo.defaultProps = {
-  color: 'white'
-}
+  color: 'white',
+};

@@ -27,13 +27,13 @@ const Main = styled.main`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: ${props => props.theme.athensGray};
+  background: ${(props) => props.theme.athensGray};
 `;
 
 const theme = {
   athensGray: '#eff1f5',
-  mirage: '#181E25'
-}
+  mirage: '#181E25',
+};
 
 export default function App() {
   return (
