@@ -11,12 +11,14 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "graphql": "^14.6.0",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-awesome-slider": "^4.1.0",
     "react-burger-menu": "^2.6.13",
     "react-dom": "^16.13.1",
     "react-infinite-scroller": "^1.2.4",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "styled-components": "^5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
