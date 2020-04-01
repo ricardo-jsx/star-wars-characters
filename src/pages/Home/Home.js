@@ -1,12 +1,13 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import Logo from 'components/Logo/index';
 import ImgSlider from 'components/ImgSlider/index';
 import Nav from 'components/Nav/index';
 import Loader from 'components/Loader/index';
+import CharacterList from './CharacterList';
 
-import { useCharacter, usePage } from './useQueries';
+import { useCharacter } from './useQueries';
 
 const HomeStyled = styled.div`
   display: flex;
@@ -42,7 +43,7 @@ export default function Home() {
       </div>
       <div className="right">
         <Nav>
-          <p>Some content to be displayed only after click</p>
+          <CharacterList />
         </Nav>
       </div>
     </HomeStyled>

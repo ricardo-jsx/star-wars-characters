@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/react-hooks';
 
 import { GET_LUKE, GET_PAGE } from './Home.queries';
-import { useMemo } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 
 export function useCharacter() {
   const { loading, data } = useQuery(GET_LUKE, {
@@ -23,11 +23,35 @@ export function useCharacter() {
 }
 
 export function usePage() {
-  const { loading, data } = useQuery(GET_PAGE, {
+  const [page, setPage] = useState(1);
+  const { loading, data = {}, fetchMore } = useQuery(GET_PAGE, {
     variables: { page: 1 },
   });
 
-  const pageOfCharacters = loading ? {} : data.pageOfCharacters;
+  useEffect(() => {
+    if (page > 1 && !loading) {
+      fetchMore({
+        variables: { page },
+        updateQuery: (prev, { fetchMoreResult }) => {
+          if (!fetchMoreResult) return prev;
 
-  return { loading, pageOfCharacters };
+          return {
+            ...prev,
+            pageOfCharacters: {
+              ...prev.pageOfCharacters,
+              results: [...prev.pageOfCharacters.results, ...fetchMoreResult.pageOfCharacters.results],
+            },
+          };
+        },
+      });
+    }
+  }, [page, loading, fetchMore]);
+
+  return {
+    loading,
+    pageOfCharacters: data.pageOfCharacters,
+    nextPage() {
+      setPage(page + 1);
+    },
+  };
 }
