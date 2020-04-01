@@ -16,10 +16,15 @@ export const GET_LUKE = gql`
 `;
 
 //TODO
-export const GET_CHARACTERS = gql`
-  {
-    character(id: 1) {
-      id
+export const GET_PAGE = gql`
+  query Page($page: Int!) {
+    pageOfCharacters(page: $page) {
+      count
+      results {
+        id
+        name
+        img
+      }
     }
   }
 `;

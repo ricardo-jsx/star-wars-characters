@@ -6,7 +6,7 @@ import ImgSlider from 'components/ImgSlider/index';
 import Nav from 'components/Nav/index';
 import Loader from 'components/Loader/index';
 
-import useCharacter from './hooks/useCharacter';
+import { useCharacter, usePage } from './useQueries';
 
 const HomeStyled = styled.div`
   display: flex;

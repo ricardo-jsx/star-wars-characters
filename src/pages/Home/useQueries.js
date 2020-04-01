@@ -1,9 +1,9 @@
 import { useQuery } from '@apollo/react-hooks';
 
-import { GET_LUKE } from '../Home.queries';
+import { GET_LUKE, GET_PAGE } from './Home.queries';
 import { useMemo } from 'react';
 
-export default function useCharacter() {
+export function useCharacter() {
   const { loading, data } = useQuery(GET_LUKE, {
     variables: { id: 1 },
   });
@@ -20,4 +20,14 @@ export default function useCharacter() {
   const character = loading ? {} : data.character;
 
   return { loading, character: { ...character, imgs } };
+}
+
+export function usePage() {
+  const { loading, data } = useQuery(GET_PAGE, {
+    variables: { page: 1 },
+  });
+
+  const pageOfCharacters = loading ? {} : data.pageOfCharacters;
+
+  return { loading, pageOfCharacters };
 }
