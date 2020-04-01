@@ -6,6 +6,7 @@ import ImgSlider from 'components/ImgSlider/index';
 import Nav from 'components/Nav/index';
 import Loader from 'components/Loader/index';
 import CharacterList from './CharacterList';
+import CharacterDetails from './CharacterDetails';
 
 import { useCharacter } from './useQueries';
 
@@ -27,6 +28,8 @@ const HomeStyled = styled.div`
   .right {
     display: flex;
     flex: 1;
+    flex-direction: column;
+    position: relative;
   }
 `;
 
@@ -46,6 +49,7 @@ export default function Home() {
         <Nav>
           <CharacterList onSelectCharacter={setCharacterId} />
         </Nav>
+        <CharacterDetails character={character} />
       </div>
     </HomeStyled>
   );

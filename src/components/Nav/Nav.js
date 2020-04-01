@@ -7,7 +7,7 @@ export default function Nav({ children }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav style={{ position: 'relative', width: '100%' }}>
+    <nav style={{ position: 'absolute', width: '100%', height: '100%' }}>
       <Burger open={open} setOpen={setOpen} />
       <ClipPath open={open}>{children}</ClipPath>
     </nav>

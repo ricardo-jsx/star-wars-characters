@@ -9,7 +9,10 @@ const typeDefs = gql`
     name: String
     height: String
     mass: String
+    hair_color: String
+    birth_year: String
     gender: String
+    skin_color: String
     img: String
     starships: [Starship]
   }

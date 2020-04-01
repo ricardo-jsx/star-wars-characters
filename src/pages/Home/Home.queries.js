@@ -5,6 +5,12 @@ export const GET_LUKE = gql`
     character(id: $id) {
       id
       name
+      height
+      mass
+      hair_color
+      birth_year
+      gender
+      skin_color
       img
       starships {
         id

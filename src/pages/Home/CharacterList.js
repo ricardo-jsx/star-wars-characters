@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { usePage } from './useQueries';
 
 const StyledList = styled.ul`
-  display: flex;
+  display: block;
   justify-content: center;
   flex-direction: column;
   height: 100%;
@@ -59,6 +59,7 @@ const StyledButton = styled.button`
   border: none;
   cursor: pointer;
   font-family: StarJedi;
+  width: 100%;
 
   &:disabled {
     background: gray;
