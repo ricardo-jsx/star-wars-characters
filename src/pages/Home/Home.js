@@ -1,11 +1,10 @@
 import React, { useMemo } from 'react';
 import styled from 'styled-components';
-import { useQuery } from '@apollo/react-hooks';
 
 import Logo from 'components/Logo/index';
 import ImgSlider from 'components/ImgSlider/index';
-
-import { GET_LUKE } from './Home.queries';
+import Nav from 'components/Nav/index';
+import useCharacter from './hooks/useCharacter';
 
 const HomeStyled = styled.div`
   display: flex;
@@ -29,16 +28,7 @@ const HomeStyled = styled.div`
 `;
 
 export default function Home() {
-  const { loading, error, data } = useQuery(GET_LUKE);
-
-  const imgs = useMemo(() => {
-    if (loading) return [];
-
-    return [
-      { id: data.character.id, name: data.character.name, img: data.character.img },
-      ...data.character.starships.map(({ id, img, name }) => ({ id, name, img })),
-    ];
-  }, [data, loading]);
+  const { loading, character } = useCharacter();
 
   if (loading) return <p>Loading...</p>;
 
@@ -46,9 +36,13 @@ export default function Home() {
     <HomeStyled>
       <div className="left">
         <Logo />
-        <ImgSlider imgs={imgs} />
+        <ImgSlider imgs={character.imgs} />
       </div>
-      <div className="right" />
+      <div className="right">
+        <Nav>
+          <p>Some content to be displayed only after click</p>
+        </Nav>
+      </div>
     </HomeStyled>
   );
 }

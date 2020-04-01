@@ -14,3 +14,12 @@ export const GET_LUKE = gql`
     }
   }
 `;
+
+//TODO
+export const GET_CHARACTERS = gql`
+  {
+    character(id: 1) {
+      id
+    }
+  }
+`;

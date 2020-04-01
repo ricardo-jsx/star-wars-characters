@@ -31,6 +31,7 @@ const Main = styled.main`
 `;
 
 const theme = {
+  white: '#FFF',
   athensGray: '#eff1f5',
   mirage: '#181E25',
 };
