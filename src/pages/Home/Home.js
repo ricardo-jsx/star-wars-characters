@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import Logo from 'components/Logo/index';
 import ImgSlider from 'components/ImgSlider/index';
 import Nav from 'components/Nav/index';
+import Loader from 'components/Loader/index';
+
 import useCharacter from './hooks/useCharacter';
 
 const HomeStyled = styled.div`
@@ -30,13 +32,13 @@ const HomeStyled = styled.div`
 export default function Home() {
   const { loading, character } = useCharacter();
 
-  if (loading) return <p>Loading...</p>;
-
   return (
     <HomeStyled>
       <div className="left">
         <Logo />
-        <ImgSlider imgs={character.imgs} />
+        <Loader loading={loading}>
+          <ImgSlider imgs={character.imgs} />
+        </Loader>
       </div>
       <div className="right">
         <Nav>

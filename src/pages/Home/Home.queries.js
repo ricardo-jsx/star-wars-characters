@@ -1,8 +1,8 @@
 import { gql } from 'apollo-boost';
 
 export const GET_LUKE = gql`
-  {
-    character(id: 1) {
+  query Character($id: Int!) {
+    character(id: $id) {
       id
       name
       img

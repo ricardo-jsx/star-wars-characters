@@ -21,7 +21,8 @@ const typeDefs = gql`
   }
 
   type Query {
-    character(id: Int): Character
+    character(id: Int!): Character
+    characters(page: Int!): [Character]
   }
 `;
 
@@ -32,6 +33,7 @@ const resolvers = {
 
       return { ...character.data, id: args.id };
     },
+    async characters(_, args) {},
   },
   Character: {
     async starships(parent) {

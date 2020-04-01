@@ -4,12 +4,12 @@ import { GET_LUKE } from '../Home.queries';
 import { useMemo } from 'react';
 
 export default function useCharacter() {
-  const { loading, error, data } = useQuery(GET_LUKE);
+  const { loading, data } = useQuery(GET_LUKE, {
+    variables: { id: 1 },
+  });
 
   const imgs = useMemo(() => {
     if (loading) return [];
-
-    console.log("I'M HERE", data.character);
 
     return [
       { id: data.character.id, name: data.character.name, img: data.character.img },
