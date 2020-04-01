@@ -4,6 +4,7 @@ import { usePage } from './useQueries';
 
 const StyledList = styled.ul`
   display: flex;
+  justify-content: center;
   flex-direction: column;
   height: 100%;
   width: 100%;
@@ -58,21 +59,33 @@ const StyledButton = styled.button`
   border: none;
   cursor: pointer;
   font-family: StarJedi;
+
+  &:disabled {
+    background: gray;
+    cursor: not-allowed;
+  }
 `;
 
-export default function CharacterList() {
-  const { loading, pageOfCharacters = { results: [] }, nextPage } = usePage();
+export default function CharacterList({ onSelectCharacter }) {
+  const { loading, pageOfCharacters, nextPage } = usePage();
+  const { results = [], count = 0 } = pageOfCharacters;
+
+  const fetchedAllCharacters = results.length >= count;
 
   return (
     <StyledList>
-      {pageOfCharacters.results.map((result) => (
-        <StyledListItem key={result.id}>
+      {results.map((result) => (
+        <StyledListItem key={result.id} onClick={() => onSelectCharacter(result.id)}>
           <img src={result.img} alt={`Preview ${result.name}`} />
           <span>{result.name}</span>
         </StyledListItem>
       ))}
 
-      {!loading && <StyledButton onClick={nextPage}>Load More...</StyledButton>}
+      {!loading && (
+        <StyledButton onClick={nextPage} disabled={fetchedAllCharacters}>
+          Load More...
+        </StyledButton>
+      )}
     </StyledList>
   );
 }

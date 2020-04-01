@@ -3,9 +3,9 @@ import { useQuery } from '@apollo/react-hooks';
 import { GET_LUKE, GET_PAGE } from './Home.queries';
 import { useMemo, useState, useEffect } from 'react';
 
-export function useCharacter() {
+export function useCharacter(id) {
   const { loading, data } = useQuery(GET_LUKE, {
-    variables: { id: 1 },
+    variables: { id },
   });
 
   const imgs = useMemo(() => {
@@ -49,7 +49,7 @@ export function usePage() {
 
   return {
     loading,
-    pageOfCharacters: data.pageOfCharacters,
+    pageOfCharacters: data.pageOfCharacters || {},
     nextPage() {
       setPage(page + 1);
     },

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import Logo from 'components/Logo/index';
@@ -31,7 +31,8 @@ const HomeStyled = styled.div`
 `;
 
 export default function Home() {
-  const { loading, character } = useCharacter();
+  const [characterId, setCharacterId] = useState(1);
+  const { loading, character } = useCharacter(characterId);
 
   return (
     <HomeStyled>
@@ -43,7 +44,7 @@ export default function Home() {
       </div>
       <div className="right">
         <Nav>
-          <CharacterList />
+          <CharacterList onSelectCharacter={setCharacterId} />
         </Nav>
       </div>
     </HomeStyled>
