@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/Character/Details should display all character infos 1`] = `
+<div>
+  <section
+    class="sc-AxjAm hkfvXl"
+  >
+    <h1>
+      Character Details
+    </h1>
+    <div>
+      <span>
+        Name
+      </span>
+      <span>
+        Luke Skywalker
+      </span>
+    </div>
+    <div>
+      <span>
+        Height
+      </span>
+      <span>
+        172
+      </span>
+    </div>
+    <div>
+      <span>
+        Mass
+      </span>
+      <span>
+        77
+         KG
+      </span>
+    </div>
+    <div>
+      <span>
+        Hair Color
+      </span>
+      <span>
+        blond
+      </span>
+    </div>
+    <div>
+      <span>
+        Birth Year
+      </span>
+      <span>
+        19BBY
+      </span>
+    </div>
+    <div>
+      <span>
+        Gender
+      </span>
+      <span>
+        male
+      </span>
+    </div>
+    <div>
+      <span>
+        Skin Color
+      </span>
+      <span>
+        fair
+      </span>
+    </div>
+    <div>
+      <span>
+        Starships
+      </span>
+      <span>
+        X-wing, Imperial shuttle
+      </span>
+    </div>
+  </section>
+</div>
+`;

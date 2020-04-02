@@ -5,10 +5,9 @@ import Logo from 'components/Logo/index';
 import ImgSlider from 'components/ImgSlider/index';
 import Nav from 'components/Nav/index';
 import Loader from 'components/Loader/index';
-import CharacterList from './CharacterList';
-import CharacterDetails from './CharacterDetails';
+import { Details, List } from 'components/Character/index';
 
-import { useCharacter } from './useQueries';
+import { useCharacter, usePage } from './useQueries';
 
 const HomeStyled = styled.div`
   display: flex;
@@ -42,6 +41,7 @@ const HomeStyled = styled.div`
 export default function Home() {
   const [characterId, setCharacterId] = useState(1);
   const { loading, character } = useCharacter(characterId);
+  const { loading: pageIsLoading, pageOfCharacters, nextPage } = usePage();
 
   return (
     <HomeStyled>
@@ -53,9 +53,15 @@ export default function Home() {
       </div>
       <div className="right">
         <Nav>
-          <CharacterList onSelectCharacter={setCharacterId} />
+          <List
+            loading={pageIsLoading}
+            characters={pageOfCharacters.results}
+            onSelectCharacter={setCharacterId}
+            getMoreResults={nextPage}
+            fetchedAllCharacters={pageOfCharacters.results.length >= pageOfCharacters.count}
+          />
         </Nav>
-        <CharacterDetails character={character} />
+        <Details character={character} />
       </div>
     </HomeStyled>
   );

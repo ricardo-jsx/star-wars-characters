@@ -49,7 +49,7 @@ export function usePage() {
 
   return {
     loading,
-    pageOfCharacters: data.pageOfCharacters || {},
+    pageOfCharacters: data.pageOfCharacters || { results: [] },
     nextPage() {
       setPage(page + 1);
     },

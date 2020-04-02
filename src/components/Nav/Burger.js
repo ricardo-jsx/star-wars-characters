@@ -41,7 +41,7 @@ const StyledBurger = styled.button`
 
 export default function Burger({ open, setOpen }) {
   return (
-    <StyledBurger open={open} onClick={() => setOpen(!open)}>
+    <StyledBurger role="button" open={open} onClick={() => setOpen(!open)}>
       <div />
       <div />
       <div />
