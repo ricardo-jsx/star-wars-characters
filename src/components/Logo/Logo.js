@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const StyledLogo = styled.div`
@@ -13,26 +12,18 @@ const StyledLogo = styled.div`
   z-index: 999;
 
   h1 {
-    color: ${(props) => props.color};
+    color: ${(props) => props.theme.white};
     font-size: 16px;
     line-height: 14px;
     user-select: none;
   }
 `;
 
-export default function Logo({ color }) {
+export default function Logo() {
   return (
-    <StyledLogo color={color}>
+    <StyledLogo>
       <h1>Star</h1>
       <h1>Wars</h1>
     </StyledLogo>
   );
 }
-
-Logo.propTypes = {
-  color: PropTypes.oneOf(['white', 'black']),
-};
-
-Logo.defaultProps = {
-  color: 'white',
-};

@@ -31,6 +31,12 @@ const HomeStyled = styled.div`
     flex-direction: column;
     position: relative;
   }
+
+  @media (max-width: ${(props) => props.theme.mobile}) {
+    flex-direction: column;
+    width: 100%;
+    height: 200vh;
+  }
 `;
 
 export default function Home() {
